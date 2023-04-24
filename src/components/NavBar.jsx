@@ -1,0 +1,107 @@
+import React, { useState, useEffect } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { HiMenuAlt4, HiX } from 'react-icons/hi'
+import metamaskLogo from '../assets/nav-layers/metamasklogo.png'
+import Connect from './Connect'
+function NavBar() {
+    const [sidebar, setSidebar] = useState(false);
+    const [isMobile, setIsMobile] = useState(false)
+    const [scrolling, setScrolling] = useState("")
+    const [showCross, setShowCross] = useState(false)
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 768)
+                setIsMobile(true);
+            else
+                setIsMobile(false);
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+
+    useEffect(() => {
+        const onScroll = () => {
+            if (window.pageYOffset > 100)
+                setScrolling("scrolling")
+            else
+                setScrolling("")
+        }
+
+        // clean up code
+        window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, [scrolling]);
+
+    function handleClick() {
+        setSidebar(!sidebar)
+        setShowCross(!showCross)
+    }
+    const showSidebar = () => {
+
+        if (isMobile && !showCross) {
+            return (
+                <div className='w-50'>
+                    <HiMenuAlt4 onClick={handleClick} className='z-50 text-logo-white bg-gray-900 w-7  rounded h-7' />
+                </div>
+            )
+        }
+        if (isMobile && showCross) {
+            return (
+                <div className='w-50'>
+                    <HiX onClick={handleClick} className='z-50 text-logo-white bg-gray-900 w-7  rounded h-7' />
+                </div>
+            )
+        }
+
+        else return null
+    }
+
+    const showSideView = () => {
+        if (isMobile && sidebar) {
+            // I have to Make a transition property later 
+            return (
+                <div className={`flex flex-col h-screen w-2/5 rounded-e-3xl text-white  fixed top-0 left-0 z-50 bg-gradient-to-r from-black to-project-black`}>
+                    <ul className='flex flex-col text-xl gap-10  mt-20 self-center ml-1/8 '>
+                        <li className="hover:animate-bounce ">Home</li>
+                        <li className="hover:animate-bounce ">Host Ride</li>
+                        <li className="hover:animate-bounce ">Book Ride</li>
+                        <li className="hover:animate-bounce ">Create Vote</li>
+                        <li className="hover:animate-bounce ">Connect Wallet</li>
+                    </ul>
+                </div>
+            )
+        }
+        else return null
+    }
+
+
+    return (
+        <>
+            <div className={`${scrolling} z-40 fixed top-0 left-0 w-full h-20 `} >
+                <nav className={`nav flex flex-row justify-between items-center mx-20 mt-5 fixed top-0 left-0 right-0 `} >
+                    <Link to="/"> <div className="nav-logo text-4xl text-logo-white hover:scale-125 ">RushGo</div> </Link>
+                    <div className='items md:flex flex-row items-center justify-between hidden w-6/12'>
+
+                        <NavLink className='text-nav-white text-sm hover:scale-150 '
+                            to='/host'>Book Ride</NavLink>
+                        <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/vans">Host Ride</NavLink>
+                        <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/about">Create Vote</NavLink>
+                        <NavLink className='text-nav-white text-xs hover:scale-150 ' to="/about">
+                            <img className='w-11' src={metamaskLogo} alt="metamask" />
+                        </NavLink>
+
+                    </div >
+                    {showSidebar()}
+                </ nav >
+            </ div >
+            {showSideView()}
+        </>
+
+    )
+}
+
+export default NavBar
