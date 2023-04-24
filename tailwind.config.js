@@ -7,7 +7,8 @@ module.exports =  {
       colors: {
         'project-black': '#080609',
         'logo-white': '#F7E9E9',
-        'nav-white':'#E1CACA'
+        'nav-white':'#E1CACA',
+        'Blockchain-feature-background':'#1A1A1A'
       }
     },
   },
