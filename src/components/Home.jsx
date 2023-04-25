@@ -4,6 +4,7 @@ import bgImage from '../assets/bgImagePipe.png'
 import bgSpace from '../assets/bg-space.png'
 import LocationForm from './LocationForm'
 import BlockchainFeature from './BlockchainFeature'
+import Impacts from './Impacts'
 function Home() {
 
     return (
@@ -11,6 +12,7 @@ function Home() {
             <LocationForm />
             <img src={bgImage} className=' w-full' alt="Bacground Image" />
             <BlockchainFeature />
+            <Impacts />
             <img src={bgSpace} className=' w-full' alt="Bacground Image" />
         </div>
     )
