@@ -21,7 +21,6 @@ body{
 }
 .h-screen{
   background-image: url('./assets/bg-space.png');
-  background-repean: repeat-y;
   background-size: cover;
   height: 2000px;
 }
