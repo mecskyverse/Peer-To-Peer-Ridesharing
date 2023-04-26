@@ -3,8 +3,7 @@ import car from '../assets/ImpactsCar.png'
 import pair from '../assets/ImpactsSocializing.png'
 function Impacts() {
     return (
-
-        <div className='text-white md:text-5xl text-xl relative top-1/3 text-center'>IMPACTS
+        <div className='text-white md:text-5xl text-xl relative top-40 text-center'>IMPACTS
             <div className='flex justify-around mt-10'>
                 <div className='flex flex-col w-1/3'>
                     <img src={car} alt="Car Pollution" />
