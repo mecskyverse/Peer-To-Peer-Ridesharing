@@ -64,7 +64,7 @@ function NavBar() {
         if (isMobile && sidebar) {
             // I have to Make a transition property later 
             return (
-                <div className={`flex flex-col h-screen w-2/5 rounded-e-3xl text-white  fixed top-0 left-0 z-50 bg-gradient-to-r from-black to-project-black`}>
+                <div className={`flex flex-col h-screen w-1/2 rounded-e-3xl text-white  fixed top-0 left-0 z-50 bg-black`}>
                     <ul className='flex flex-col text-xl gap-10  mt-20 self-center ml-1/8 '>
                         <li className="hover:animate-bounce ">Home</li>
                         <li className="hover:animate-bounce ">Host Ride</li>
