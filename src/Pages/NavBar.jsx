@@ -80,14 +80,14 @@ function NavBar() {
 
 
     return (
-        <>
+        <div className='h-20'>
             <div className={`${scrolling} z-40 fixed top-0 left-0 w-full h-20 `} >
                 <nav className={`nav flex flex-row justify-between items-center mx-20 mt-5 fixed top-0 left-0 right-0 `} >
                     <Link to="/"> <div className="nav-logo text-4xl text-logo-white hover:scale-125 ">RushGo</div> </Link>
                     <div className='items md:flex flex-row items-center justify-between hidden w-6/12'>
 
                         <NavLink className='text-nav-white text-sm hover:scale-150 '
-                            to='/host'>Book Ride</NavLink>
+                            to='/bookride'>Book Ride</NavLink>
                         <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/vans">Host Ride</NavLink>
                         <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/about">Create Vote</NavLink>
                         <NavLink className='text-nav-white text-xs hover:scale-150 ' to="/about">
@@ -99,7 +99,7 @@ function NavBar() {
                 </ nav >
             </ div >
             {showSideView()}
-        </>
+        </div>
 
     )
 }

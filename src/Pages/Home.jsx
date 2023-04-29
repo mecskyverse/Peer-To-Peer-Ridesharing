@@ -10,7 +10,7 @@ function Home() {
                 <LocationForm />
 
             </div>
-            <div className="h-screen">
+            <div className="h-screen bg-space">
                 <BlockchainFeature />
                 <Impacts />
             </div >

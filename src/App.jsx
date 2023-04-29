@@ -1,9 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './components/Home'
-import NavBar from './components/NavBar'
-import Layout from './components/Layout'
-
+import Home from './Pages/Home'
+import Layout from './Pages/Layout'
+import BookRide from './Pages/BookRide'
 // import { useMoralis } from "react-moralis"
 
 function App() {
@@ -13,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path='bookRide' element={<BookRide />} />
         </Route>
       </Routes>
     </BrowserRouter>

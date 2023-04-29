@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding:0;
@@ -11,18 +15,28 @@ html, body {
   background-color: #080609;
   
 }
-body{
- 
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+.site-wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.footer{
+margin-top:auto;
+}
+
 .bg-pipe{
   background-image: url('./assets/bgImagePipe.png');
   background-size: cover;
   height:100vh;
 }
-.h-screen{
+.bg-space{
   background-image: url('./assets/bg-space.png');
   background-size: cover;
-  height: 2000px;
+  height: 1800px;
 }
 .nav-logo{
   font-family: 'Abril Fatface', sans-serif;
@@ -35,9 +49,4 @@ a {
 /* Navbar Styles*/
 .scrolling{
   backdrop-filter: blur(70px);
-}
-
-.nav-container{
-border:2px solid red;
-
 }
