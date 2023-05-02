@@ -8,7 +8,8 @@ module.exports =  {
         'project-black': '#080609',
         'logo-white': '#F7E9E9',
         'nav-white':'#E1CACA',
-        'Blockchain-feature-background':'#1A1A1A'
+        'Blockchain-feature-background':'#1A1A1A',
+        'form-text':'#e52e71'
       }
     },
   },

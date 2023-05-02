@@ -33,13 +33,7 @@ margin-top:auto;
   background-size: cover;
   height: 85vh;
 }
-.bookride-background{
-  background: radial-gradient(50% 50% at 50% 50%, #FF8A00 0%, #E52E71 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
-}
+
 .bg-pipe{
   background-image: url('./assets/bgImagePipe.png');
   background-size: cover;
