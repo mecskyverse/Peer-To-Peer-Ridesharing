@@ -48,21 +48,7 @@ function BookRide() {
         <div className='ride-book h-full w-full flex'>
             <div className='text-xl w-1/2 flex flex-col bookride-background self-center '>
                 <form onSubmit={handleSubmit(calculateRoute)} className='flex flex-col gap-10 pt-5 ml-20 text-white' action="">
-                    <div className='flex flex-row  ml-20 gap-20 self-center'>
-                        {/* //input field for location */}
-                        <input type="text" className='w-48 h-14 bg-transparent border-2 border-sky-500 rounded-2xl p-2 placeholder-form-text ' placeholder='Enter Firstname' name='firstName' {...register("firstName")} />
 
-
-                        {/* //input field for destination */}
-                        <input
-                            type="text"
-                            className='w-48 h-14 bg-transparent border-2 border-sky-500 rounded-2xl p-2  placeholder-form-text '
-                            placeholder='Enter LastName'
-                            name='lastName'
-                            {...register("lastName")}
-                        />
-
-                    </div>
                     <div className='flex flex-row gap-20 self-center'>
                         {/* //input field for location */}
                         <Autocomplete>
