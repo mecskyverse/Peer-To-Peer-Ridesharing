@@ -4,6 +4,7 @@ import Home from './Pages/Home'
 import Layout from './Pages/Layout'
 import BookRide from './Pages/BookRide'
 import HostRide from './Pages/HostRide'
+import CreateVote from './Pages/CreateVote'
 // import { useMoralis } from "react-moralis"
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='bookRide' element={<BookRide />} />
           <Route path='hostRide' element={<HostRide />} />
+          <Route path='createVote' element={<CreateVote />} />
         </Route>
       </Routes>
     </BrowserRouter>
