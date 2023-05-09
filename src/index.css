@@ -56,3 +56,20 @@ a {
 .scrolling{
   backdrop-filter: blur(70px);
 }
+
+/* createVote styles */
+
+.sidebar-background{
+  backdrop-filter: blur(70px);
+}
+.vote-list-button{
+
+
+filter: drop-shadow(15.7706px -13.6678px 112.497px rgba(248, 0, 59, 0.7)) drop-shadow(-14.7192px 17.3476px 84.1097px rgba(0, 56, 255, 0.7 ));
+
+/* Inside auto layout */
+
+flex: none;
+order: 1;
+flex-grow: 0;
+}
