@@ -88,8 +88,8 @@ function NavBar() {
 
                         <NavLink className='text-nav-white text-sm hover:scale-150 '
                             to='/bookride'>Book Ride</NavLink>
-                        <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/vans">Host Ride</NavLink>
-                        <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/about">Create Vote</NavLink>
+                        <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/hostride">Host Ride</NavLink>
+                        <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/createvote">Create Vote</NavLink>
                         <NavLink className='text-nav-white text-xs hover:scale-150 ' to="/about">
                             <img className='w-11' src={metamaskLogo} alt="metamask" />
                         </NavLink>
