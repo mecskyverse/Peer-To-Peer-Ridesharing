@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import createVotebg from '../assets/createVote.jpg'
+import { HiX } from 'react-icons/hi'
 function CreateVote() {
     const [sidebar, setSidebar] = useState(false)
     function handleClick() {
@@ -12,13 +13,12 @@ function CreateVote() {
             // I have to Make a transition property later 
             console.log("sidebar activated")
             return (
-                <div className={`flex flex-col h-screen w-3/4 rounded-e-3xl text-white  fixed top-0 right-0 z-50 sidebar-background`}>
+
+                <div className={`flex flex-col content-center justify-center h-screen w-3/4 rounded-e-3xl text-white  fixed top-0 right-0 z-50 sidebar-background`}>
+                    <HiX className='hover:text-gray-500 absolute top-10 left-5 w-10 h-7' onClick={handleClick} />
+                    <h2 className='text-sky-200 font-serif text-4xl place-self-center'>List of Current Votings</h2>
                     <ul className='flex flex-col text-xl gap-10  mt-20 self-center ml-1/8 '>
-                        <li className="hover:animate-bounce ">Home</li>
-                        <li className="hover:animate-bounce ">Host Ride</li>
-                        <li className="hover:animate-bounce ">Book Ride</li>
-                        <li className="hover:animate-bounce ">Create Vote</li>
-                        <li className="hover:animate-bounce ">Connect Wallet</li>
+
                     </ul>
                 </div>
             )
