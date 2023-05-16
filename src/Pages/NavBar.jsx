@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { HiMenuAlt4, HiX } from 'react-icons/hi'
 import metamaskLogo from '../assets/nav-layers/metamasklogo.png'
-import Connect from './Connect'
+import Connect from '../components/Connect'
+
 function NavBar() {
+    const [walletConnected, setWalletConnected] = useState(false);
     const [sidebar, setSidebar] = useState(false);
     const [isMobile, setIsMobile] = useState(false)
     const [scrolling, setScrolling] = useState("")
     const [showCross, setShowCross] = useState(false)
+    const childRef = useRef();
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 768)
@@ -39,6 +42,9 @@ function NavBar() {
     function handleClick() {
         setSidebar(!sidebar)
         setShowCross(!showCross)
+    }
+    const toggleWalletConnect = () => {
+        setWalletConnected(!walletConnected)
     }
     const showSidebar = () => {
 
@@ -78,6 +84,11 @@ function NavBar() {
         else return null
     }
 
+    const handleWalletConnect = async () => {
+        await childRef.current.connectWallet();
+        console.log("Data fetched from child component");
+    };
+
 
     return (
         <div className='h-20'>
@@ -90,16 +101,14 @@ function NavBar() {
                             to='/bookride'>Book Ride</NavLink>
                         <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/hostride">Host Ride</NavLink>
                         <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/createvote">Create Vote</NavLink>
-                        <NavLink className='text-nav-white text-xs hover:scale-150 ' to="/about">
-                            <img className='w-11' src={metamaskLogo} alt="metamask" />
-                        </NavLink>
-
+                        <button onClick={handleWalletConnect}><Connect walletConnected={walletConnected} toggleState={toggleWalletConnect} ref={childRef} /></button>
+                        {/* <Connect walletConnected={walletConnected} toggleState={toggleWalletConnect} /> */}
                     </div >
                     {showSidebar()}
                 </ nav >
             </ div >
             {showSideView()}
-        </div>
+        </div >
 
     )
 }
