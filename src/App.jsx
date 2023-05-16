@@ -5,7 +5,7 @@ import Layout from './Pages/Layout'
 import BookRide from './Pages/BookRide'
 import HostRide from './Pages/HostRide'
 import CreateVote from './Pages/CreateVote'
-// import { useMoralis } from "react-moralis"
+
 
 function App() {
   // const { isWeb3Enabled, chainId } = useMoralis()
