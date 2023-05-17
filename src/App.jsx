@@ -5,7 +5,7 @@ import Layout from './Pages/Layout'
 import BookRide from './Pages/BookRide'
 import HostRide from './Pages/HostRide'
 import CreateVote from './Pages/CreateVote'
-
+import BookingRide from './Pages/BookingRide'
 
 function App() {
   // const { isWeb3Enabled, chainId } = useMoralis()
@@ -15,6 +15,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='bookRide' element={<BookRide />} />
+          <Route path='bookingRide' element={<BookingRide />} />
+
           <Route path='hostRide' element={<HostRide />} />
           <Route path='createVote' element={<CreateVote />} />
         </Route>
