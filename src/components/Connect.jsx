@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, forwardRef, useImperativeHandle } from 'react'
-
+import { providers } from "ethers";
 import Web3Modal from "web3modal";
 
 const Connect = forwardRef(({ walletConnected, toggleWalletConnect }, ref) => {
     const web3ModalRef = useRef();
+
     const getProviderOrSigner = async (needSigner = false) => {
         // Connect to Metamask
         // Since we store `web3Modal` as a reference, we need to access the `current` value to get access to the underlying object
@@ -30,7 +31,7 @@ const Connect = forwardRef(({ walletConnected, toggleWalletConnect }, ref) => {
             // When used for the first time, it prompts the user to connect their wallet
             console.log("connect Wallet clicked")
             await getProviderOrSigner();
-            toggleWalletConnect();
+            toggleWalletConnect;
         } catch (err) {
             console.error(err);
         }
