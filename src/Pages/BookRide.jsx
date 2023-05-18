@@ -1,16 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer } from '@react-google-maps/api'
 import { useForm } from 'react-hook-form'
+import { NavLink } from 'react-router-dom';
+const libraries = ['places']
 function BookRide() {
     const [directionsResponse, setDirectionsResponse] = useState(null)
-    const [distance, setDistance] = useState('')
+    const [distance, setDistance] = useState(0)
     const [duration, setDuration] = useState('')
+    const [origin, setOrigin] = useState('')
+    const [destination, setDestination] = useState('')
+
     const originRef = React.useRef()
     const destinationRef = React.useRef()
 
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-        libraries: ['places'],
+        libraries: libraries,
     })
     const {
         register,
@@ -22,10 +27,11 @@ function BookRide() {
 
     if (!isLoaded)
         return <div>Loading...</div>
-
     // function to calculate Route
     async function calculateRoute(data) {
-        console.log(data)
+
+        setOrigin(originRef.current.value)
+        setDestination(destinationRef.current.value)
         data.origin = originRef.current.value
         data.destination = destinationRef.current.value
         console.log(data)
@@ -74,7 +80,18 @@ function BookRide() {
 
                     <input type="date" name="date" id="form-date" className='w-48 h-14 text-form-text bg-transparent border-2 border-[#f15a16] rounded-2xl p-2 self-center' style={{ filter: 'invert(1)' }} {...register("date")} />
                     {/* //button to submit */}
-                    <button type='submit' className='h-12 self-center bg-transparent text-yellow-300 rounded-2xl p-2 justify-self-center border-2 border-sky-500'>Get Estimate</button>
+                    {
+                        !directionsResponse ? <button type='submit' className={`h-12 self-center bg-transparent text-yellow-300 rounded-2xl p-2 
+                        justify-self-center border-2 border-sky-500`}>Get Estimate </button>
+
+                            :
+                            <button className={`h-12 self-center bg-transparent text-yellow-300 rounded-2xl p-2 justify-self-center border-2 border-sky-500`}>
+                                <NavLink to='/bookingRide' state={{ origin: origin, destination: destination, distance: distance }}
+                                >Book Ride
+                                </NavLink>
+                            </button>
+                    }
+
                 </form>
                 {
                     directionsResponse && (
