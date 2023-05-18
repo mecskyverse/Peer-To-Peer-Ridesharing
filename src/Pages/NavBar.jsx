@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { HiMenuAlt4, HiX } from 'react-icons/hi'
-import metamaskLogo from '../assets/nav-layers/metamasklogo.png'
-import Connect from '../components/Connect'
-
+import MyContext from '../components/MyContext';
 function NavBar() {
-    const [walletConnected, setWalletConnected] = useState(false);
+    const { walletConnected, setWalletConnected } = useContext(MyContext);
     const [sidebar, setSidebar] = useState(false);
     const [isMobile, setIsMobile] = useState(false)
     const [scrolling, setScrolling] = useState("")
     const [showCross, setShowCross] = useState(false)
-    const childRef = useRef();
+    const web3ModalRef = useRef();
+
+
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 768)
@@ -43,9 +43,7 @@ function NavBar() {
         setSidebar(!sidebar)
         setShowCross(!showCross)
     }
-    const toggleWalletConnect = () => {
-        setWalletConnected(!walletConnected)
-    }
+
     const showSidebar = () => {
 
         if (isMobile && !showCross) {
@@ -84,12 +82,6 @@ function NavBar() {
         else return null
     }
 
-    const handleWalletConnect = async () => {
-        await childRef.current.connectWallet();
-        console.log("Data fetched from child component");
-    };
-
-
     return (
         <div className='h-20'>
             <div className={`${scrolling} z-40 fixed top-0 left-0 w-full h-20 `} >
@@ -99,10 +91,11 @@ function NavBar() {
 
                         <NavLink className='text-nav-white text-sm hover:scale-150 '
                             to='/bookride'>Book Ride</NavLink>
+
                         <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/hostride">Host Ride</NavLink>
                         <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/createvote">Create Vote</NavLink>
-                        <button onClick={handleWalletConnect}><Connect walletConnected={walletConnected} toggleState={toggleWalletConnect} ref={childRef} /></button>
-                        {/* <Connect walletConnected={walletConnected} toggleState={toggleWalletConnect} /> */}
+                        <button className='text-nav-white text-sm hover:scale-150 '>{walletConnected ? 'Connected' : 'Connect'}</button>
+
                     </div >
                     {showSidebar()}
                 </ nav >
