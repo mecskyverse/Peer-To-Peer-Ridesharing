@@ -13,41 +13,23 @@ function BookingRide() {
     const [rideArray, setRideArray] = useState([]);
 
 
-    const Ridearray = [
-
-        {
-            address: '0x5B38Da6a701c568545dCfcB03FcB875f56bkdC4', origin: 'Delhi, India',
-            destination: 'Chandigarh, India', distance: '203.1 km'
-        },
-        {
-            address: '0x7438Da6a701c568545dCfcB03FcB875f56beldC4', origin: 'Pune, Maharashtra, India',
-            destination: 'Raipur, Chattisgarh India', distance: '451.6 km'
-        },
-        {
-            address: '0x5B38Da6a701c568545dCfcB03FcB875f56beddC4', origin: 'Indore, India',
-            destination: 'Kota, India', distance: '195.4'
-        },
-        {
-            address: '0xAF8E45a64eDbbc5f4556d6de8CF5566cD0109D45', origin: 'Kharar, Punjab, India',
-            destination: 'Chandigarh, India', distance: '21.6 km'
-        }
-    ]
-
     const location = useLocation()
 
     const [distance, setDistance] = useState(0)
     const [origin, setOrigin] = useState('')
     const [destination, setDestination] = useState('')
-    // console.log(location.state)
-    console.log(distance)
+    console.log(origin)
+    console.log(destination)
+
     useEffect(() => {
-        setDistance(location.state.distance)
+        availableRides();
+        setDestination(location.state.destination)
         setOrigin(location.state.origin)
         let currdistance = location.state.distance;
         let roundedDistance = Math.round(parseFloat(currdistance)); // Round off the value
         let wholeNumber = Math.floor(roundedDistance);
         setDistance(wholeNumber)
-    })
+    }, [distance, origin, destination])
 
 
     const addRider = async () => {
@@ -86,7 +68,7 @@ function BookingRide() {
                 fare: ride.fare.toString(),
             }));
             setRideArray(formattedResult)
-            console.log("result = " + formattedResult[0].user)
+            console.log("result = " + formattedResult[1].destination)
         } catch (err) {
             console.error(err);
         }
@@ -113,7 +95,7 @@ function BookingRide() {
                     <tbody>
                         {rideArray.map((ride, index) => (
                             <React.Fragment key={index}>
-                                <tr key={index}>
+                                <tr key={index} className='h-8'>
                                     <td className='text-center'>{ride.user}</td>
                                     <td className='text-center'>{ride.origin}</td>
                                     <td className='text-center'>{ride.destination}</td>
@@ -141,10 +123,13 @@ function BookingRide() {
 
     return (
         <main className='ride-book w-full'>
-            <section className='flex flex-col w-full' >
-                <button onClick={addRider} className=' h-10 bg-slate-50' >Create Ride</button>
-                <button onClick={availableRides} className=' h-10 bg-slate-50' >available rides</button>
+            <section className='flex flex-col gap-10 w-full' >
+                <div className='text-white text-3xl self-center mt-10 '> Available Rides</div>
                 {showArray()}
+                <div className='flex flex-row gap-8 self-center'>
+                    <button onClick={addRider} className='hover:bg-sky-400 h-10 bg-slate-50 p-2 w-auto' >Create Ride</button>
+                    <button onClick={availableRides} className='hover:bg-sky-400 h-10 bg-slate-50    p-2 w-auto' >Available rides</button>
+                </div>
             </section>
         </main>
     )
