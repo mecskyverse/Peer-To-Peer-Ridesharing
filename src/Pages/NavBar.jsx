@@ -43,6 +43,16 @@ function NavBar() {
         setSidebar(!sidebar)
         setShowCross(!showCross)
     }
+    const handleConnectClick = () => {
+        try {
+            if (typeof window.ethereum == 'undefined') {
+                window.alert("Install Metask to smoothly use this app");
+                window.alert("Or change Network to Sepolia testNet")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const showSidebar = () => {
 
@@ -94,7 +104,7 @@ function NavBar() {
 
                         <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/hostride">Host Ride</NavLink>
                         <NavLink className='text-nav-white text-sm hover:scale-150 ' to="/createvote">Create Vote</NavLink>
-                        <button className='text-nav-white text-sm hover:scale-150 '>{walletConnected ? 'Connected' : 'Connect'}</button>
+                        <button className='text-nav-white text-sm hover:scale-150 onClick={handleConnectClick}'>{walletConnected ? 'Connected' : 'Connect'}</button>
 
                     </div >
                     {showSidebar()}
