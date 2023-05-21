@@ -46,7 +46,8 @@ function BookRide() {
             travelMode: google.maps.TravelMode.DRIVING
         })
         setDirectionsResponse(results)
-        setDistance(results.routes[0].legs[0].distance.text)
+
+        setDistance(Math.floor(results.routes[0].legs[0].distance.value / 1000))
         setDuration(results.routes[0].legs[0].duration.text)
     }
     const center = { lat: 30.7506, lng: 76.6401 }
@@ -95,9 +96,10 @@ function BookRide() {
                 </form>
                 {
                     directionsResponse && (
-                        <div className='self-center mt-20 text-white flex justify-between w-1/2'>
-                            <div>Distance = {distance}</div>
+                        <div className='self-center mt-20 text-white flex flex-col w-1/2'>
+                            <div>Distance = {distance} km</div>
                             <div>Duration= {duration}</div>
+                            <div>Estimated Fare= {distance * 1000} wei</div>
                         </div>
                     )
                 }
