@@ -38,6 +38,10 @@ body {
   height: 85vh;
 }
 
+.h-increase {
+  height: 110vh;
+}
+
 .bg-pipe {
   background-image: url('./assets/bgImagePipe.png');
   background-size: cover;
