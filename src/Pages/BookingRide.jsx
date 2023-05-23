@@ -78,14 +78,11 @@ function BookingRide() {
                 fare: ride.fare.toString(),
             }));
             setRideArray(formattedResult)
-
-            // console.log("result = " + formattedResult[1].destination)
         } catch (err) {
             console.error(err);
         }
     }
     const showRidesSameLocation = async () => {
-        // console.log("button clicked")
         try {
 
             const provider = await getProviderOrSigner();
