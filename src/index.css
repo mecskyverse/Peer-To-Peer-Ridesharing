@@ -54,6 +54,10 @@ body {
   height: 1800px;
 }
 
+.blockchain-feature {
+  font-family: 'Roboto Condensed', 'sans serif';
+}
+
 .nav-logo {
   font-family: 'Abril Fatface', sans-serif;
 }
