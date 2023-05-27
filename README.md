@@ -5,9 +5,11 @@
 
 Peer-to-Peer Ridesharing Web App built using React and Ethereum smart contracts. The purpose of this application is to provide a platform for users to share rides with others, allowing them to save costs and reduce their environmental impact. The app also incorporates features such as hosting rides and creating votes to adjust the overall fare price.
 
+You can live interact with the website here.
+
 <h2>Features</h2>
 1. Book Ride
-The "Book Ride" feature enables users to find and book rides shared by other users. Users can specify their desired pickup and drop-off locations, along with the preferred date and time. The app will display a list of available rides matching the criteria, and users can book a seat in the desired ride.
+The "Book Ride" feature enables users to find and book rides shared by other users. Users can specify their desired pickup and drop-off locations, along with the preferred date. The app will display a list of available rides matching the criteria, and users can book a seat in the desired ride. It integrates Google Maps API to tell you about the distance and estimated price you have to give for reaching your destination. 
 
 2. Host Ride
 The "Host Ride" feature allows users to become ride hosts and offer their available seats to others. Users can specify the pickup and drop-off locations, date, time, and the number of available seats in their vehicle. Interested users can book these available seats.
